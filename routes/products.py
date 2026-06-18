@@ -5,7 +5,7 @@ from models import Product
 products_bp = Blueprint("products_bp", __name__)
 
 # GET ALL PRODUCTS
-@products_bp.route("admin/products", methods=["GET"])
+@products_bp.route("/admin/products", methods=["GET"])
 def get_products():
     products = Product.query.all()
 
@@ -21,8 +21,7 @@ def get_products():
         for p in products
     ])
 
-
-# CREATE PRODUCT (ADMIN)
+# CREATE PRODUCT
 @products_bp.route("/admin/products", methods=["POST"])
 def create_product():
     data = request.json
@@ -41,32 +40,28 @@ def create_product():
     return jsonify({"message": "Product created"}), 201
 
 
-# DELETE PRODUCT (ADMIN)
-@products_bp.route("/admin/products/<int:id>", methods=["DELETE"])
-def delete_product(id):
-    product = Product.query.get_or_404(id)
-
+# DELETE PRODUCT
 @products_bp.route("/admin/products/<int:id>", methods=["DELETE"])
 def delete_product(id):
     product = Product.query.get(id)
 
     if not product:
-        return {"error": "Not found"}, 404
+        return jsonify({"error": "Not found"}), 404
 
-    db.session.delete(product)
-    db.session.commit()
-
-    return {"message": "Deleted"}
     db.session.delete(product)
     db.session.commit()
 
     return jsonify({"message": "Product deleted"})
 
 
-# UPDATE PRODUCT (ADMIN)
+# UPDATE PRODUCT
 @products_bp.route("/admin/products/<int:id>", methods=["PUT"])
 def update_product(id):
-    product = Product.query.get_or_404(id)
+    product = Product.query.get(id)
+
+    if not product:
+        return jsonify({"error": "Not found"}), 404
+
     data = request.json
 
     product.name = data.get("name", product.name)
