@@ -8,7 +8,7 @@ class Product(db.Model):
     price = db.Column(db.Float, nullable=False)
     category = db.Column(db.String(100))
     description = db.Column(db.Text)
-    image = db.Column(db.String(500))
+    image = db.Column(db.Text)
 
 class Customer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -19,4 +19,5 @@ class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     customer_id = db.Column(db.Integer, db.ForeignKey('customer.id'))
     total = db.Column(db.Float)
-    status = db.Column(db.String(50))  # pending, paid, shipped, delivered
+    status = db.Column(db.String(50), default="pending")
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
