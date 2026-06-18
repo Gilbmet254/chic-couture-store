@@ -1,23 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Chic Couture Admin</title>
-    <link rel="stylesheet" href="Style/style.css">
-    <link rel="stylesheet" href="Style/admin.css">
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Admin Dashboard</h1>
+    <h1>🛍 Chic Couture Admin</h1>
 
-<div>
-    <button onclick="loadProducts()">Products</button>
-    <button onclick="loadOrders()">Orders</button>
-    <button onclick="loadCustomers()">Customers</button>
-</div>
+    <!-- ===================== -->
+    <!-- ADD PRODUCT FORM -->
+    <!-- ===================== -->
+    <section class="form">
+        <h2>Add Product</h2>
 
-<div id="output"></div>
+        <input id="name" placeholder="Product Name">
+        <input id="price" placeholder="Price">
+        <input id="category" placeholder="Category">
+        <input id="description" placeholder="Description">
+        <input id="image" placeholder="Image URL">
 
-<script src="admin.js"></script>
+        <button onclick="addProduct()">Add Product</button>
+    </section>
 
+    <hr>
+
+    <!-- ===================== -->
+    <!-- OUTPUT AREA -->
+    <!-- ===================== -->
+    <div id="output"></div>
+
+    <script src="admin.js"></script>
 </body>
 </html>

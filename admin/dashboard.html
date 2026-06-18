@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+</head>
+<body>
+
+<h1>Admin Dashboard</h1>
+
+<h2>Add Product</h2>
+
+<input id="name" placeholder="Name"><br>
+<input id="price" placeholder="Price"><br>
+<input id="category" placeholder="Category"><br>
+<input id="description" placeholder="Description"><br>
+<input id="image" placeholder="Image URL"><br>
+
+<button onclick="addProduct()">Add Product</button>
+
+<hr>
+
+<h2>Products</h2>
+<div id="products"></div>
+
+<script>
+const API = "https://chic-couture-store-api.onrender.com";
+
+async function loadProducts() {
+  const res = await fetch(API + "/products");
+  const data = await res.json();
+
+  document.getElementById("products").innerHTML =
+    data.map(p => `
+      <div>
+        <h3>${p.name}</h3>
+        <p>${p.price}</p>
+        <button onclick="deleteProduct(${p.id})">Delete</button>
+      </div>
+    `).join("");
+}
+
+async function addProduct() {
+  await fetch(API + "/admin/products", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({
+      name: document.getElementById("name").value,
+      price: document.getElementById("price").value,
+      category: document.getElementById("category").value,
+      description: document.getElementById("description").value,
+      image: document.getElementById("image").value
+    })
+  });
+
+  loadProducts();
+}
+
+async function deleteProduct(id) {
+  await fetch(API + "/admin/products/" + id, {
+    method: "DELETE"
+  });
+
+  loadProducts();
+}
+
+loadProducts();
+</script>
+
+</body>
+</html>
