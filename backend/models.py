@@ -1,6 +1,5 @@
-from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy()
+from datetime import datetime
+from extensions import db
 
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -20,4 +19,4 @@ class Order(db.Model):
     customer_id = db.Column(db.Integer, db.ForeignKey('customer.id'))
     total = db.Column(db.Float)
     status = db.Column(db.String(50), default="pending")
-    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
