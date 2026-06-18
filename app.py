@@ -2,7 +2,7 @@ import os
 from flask import Flask, jsonify
 from flask_cors import CORS
 from extensions import db
-from models import Product
+from models import Product, Customer, Order
 
 app = Flask(__name__)
 CORS(app)
