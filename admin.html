@@ -3,34 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="admin.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
 
-    <h1>🛍 Chic Couture Admin</h1>
+<!-- NAVBAR -->
+<div class="navbar">
+    <h2>🛍 Chic Couture Admin</h2>
+    <button onclick="loadProducts()">Products</button>
+</div>
 
-    <!-- ===================== -->
-    <!-- ADD PRODUCT FORM -->
-    <!-- ===================== -->
-    <section class="form">
-        <h2>Add Product</h2>
+<div class="container">
 
-        <input id="name" placeholder="Product Name">
+    <!-- LEFT: FORM -->
+    <div class="form-box">
+        <h3>Add Product</h3>
+
+        <input id="name" placeholder="Product name">
         <input id="price" placeholder="Price">
         <input id="category" placeholder="Category">
-        <input id="description" placeholder="Description">
-        <input id="image" placeholder="Image URL">
+        <input id="image" placeholder="Image URL (Google image link)">
+        <textarea id="description" placeholder="Description"></textarea>
 
-        <button onclick="addProduct()">Add Product</button>
-    </section>
+        <button onclick="addProduct()">➕ Add Product</button>
+    </div>
 
-    <hr>
+    <!-- RIGHT: OUTPUT -->
+    <div class="dashboard">
 
-    <!-- ===================== -->
-    <!-- OUTPUT AREA -->
-    <!-- ===================== -->
-    <div id="output"></div>
+        <canvas id="chart"></canvas>
 
-    <script src="admin.js"></script>
+        <div id="output"></div>
+
+    </div>
+
+</div>
+
+<script src="admin.js"></script>
+
 </body>
 </html>
