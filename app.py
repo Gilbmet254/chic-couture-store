@@ -4,6 +4,9 @@ from flask_cors import CORS
 from extensions import db
 from models import Product, Customer, Order
 
+from routes.products import products_bp
+app.register_blueprint(products_bp)
+
 app = Flask(__name__)
 CORS(app)
 
