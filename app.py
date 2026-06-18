@@ -1,7 +1,18 @@
 from flask import Flask, jsonify, request
 import sqlite3
 import json
+import os
 from flask_cors import CORS
+from flask_sqlalchemy import SQLAlchemy
+import os
+
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///store.db"
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+db = SQLAlchemy(app)
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+FILE_PATH = os.path.join(BASE_DIR, "json", "products.json")
 
 app = Flask(__name__)
 CORS(app)
