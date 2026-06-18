@@ -23,6 +23,10 @@ def products():
 def test():
     return {"status": "working"}
 
+@app.route("/")
+def home():
+    return "Chic Couture API is running..."
+
 # SIGNUP
 @app.route("/signup", methods=["POST"])
 def signup():
