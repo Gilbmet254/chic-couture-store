@@ -17,6 +17,10 @@ def products():
     rows = conn.execute("SELECT * FROM products").fetchall()
     return jsonify([dict(row) for row in rows])
 
+@app.route("/test")
+def test():
+    return {"status": "working"}
+
 # SIGNUP
 @app.route("/signup", methods=["POST"])
 def signup():
