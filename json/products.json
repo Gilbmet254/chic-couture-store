@@ -2,7 +2,7 @@
     {
         "id": 1,
         "name": "Retro Sunglasses",
-        "price": "$225.00",
+        "price": 225.0,
         "images": [
             "images/Accessories/Retro-sunglasses_03.webp"
         ],
@@ -12,7 +12,7 @@
     {
         "id": 2,
         "name": "Miley Triangle Hair Scarf",
-        "price": "$22.00",
+        "price": 22.0,
         "images": [
             "images/Accessories/scrf1.webp",
             "images/Accessories/scrf2.webp",
@@ -25,7 +25,7 @@
     {
         "id": 3,
         "name": "Platform Canvas Sneakers",
-        "price": "$77.00",
+        "price": 77.0,
         "images": [
             "images/Accessories/Platform-Canvas-Sneakers_03.webp"
         ],
@@ -35,7 +35,7 @@
     {
         "id": 4,
         "name": "Quilted Heeled Mule Sandal",
-        "price": "$128.00",
+        "price": 128.0,
         "images": [
             "images/Accessories/Quilted-Heeled-Mule-Sandal_01.webp"
         ],
@@ -45,7 +45,7 @@
     {
         "id": 5,
         "name": "Ultimate Crop Bandeau Tops",
-        "price": "$22.00",
+        "price": 22.0,
         "images": [
             "images/woman/ultimate-crop-bandeau-tops_01.webp",
             "images/woman/ultimate-crop-bandeau-tops_black_01.webp",
@@ -58,7 +58,7 @@
     {
         "id": 6,
         "name": "Adilette Slide Sandal",
-        "price": "$85.00",
+        "price": 85.0,
         "images": [
             "images/Accessories/Adilette-Slide-Sandal_01.webp",
             "images/Accessories/Adilette-Slide-Sandal_color_01.webp"
@@ -82,7 +82,7 @@
     {
         "id": 8,
         "name": "Simona Ribbed Cardigan",
-        "price": "$82.00 - $89.00",
+        "price": 82.0 - 89.0,
         "images": [
             "images/woman/Simona-Ribbed-Cardigan_05.webp",
             "images/woman/Simona-Ribbed-Cardigan_03.webp",
@@ -95,7 +95,7 @@
     {
         "id": 9,
         "name": "Oversized T-shirt Multi-colors",
-        "price": "$50.00",
+        "price": 50.0,
         "images": [
             "images/woman/image68.webp",
             "images/woman/image67.webp"
@@ -118,7 +118,7 @@
     {
         "id": 11,
         "name": "Straw Floppy Hat",
-        "price": "$54.00",
+        "price": 54.0,
         "images": [
             "images/Accessories/straw-floppy-hat_03.webp"
         ],
@@ -128,7 +128,7 @@
     {
         "id": 12,
         "name": "Cat-Eye Glasses 20257",
-        "price": "$86.00",
+        "price": 86.0,
         "images": [
             "images/Accessories/sunglasses1.webp"
         ],
@@ -138,7 +138,7 @@
     {
         "id": 13,
         "name": "Pride Sport Hip Pack",
-        "price": "$39.00",
+        "price": 39.0,
         "images": [
             "images/Bags/Pride-Sport-Hip-Pack-_04.webp",
             "images/Bags/Pride-Sport-Hip-Pack-_03.webp"
@@ -149,7 +149,7 @@
     {
         "id": 14,
         "name": "Dance Bag Nylon",
-        "price": "$18.00",
+        "price": 18.0,
         "images": [
             "images/Bags/p27-3_7e6d6ca6-5882-4c64-a166-577d894b0ac3.webp",
             "images/Bags/p27-1_1bcb95c6-a3da-4de5-b15e-ec08d4cb84b9.webp"
@@ -160,7 +160,7 @@
     {
         "id": 15,
         "name": "Knit Dress In Green",
-        "price": "$188.00",
+        "price": 188.0,
         "images": [
             "images/woman/knit-dress-in-green_03.webp"
         ],
@@ -170,7 +170,7 @@
     {
         "id": 16,
         "name": "Beanie In Chocolate Brown",
-        "price": "$48.00",
+        "price": 48.0,
         "images": [
             "images/woman/beanie-in-chocolate-brown_03.webp",
             "images/woman/beanie-in-chocolate-brown_02.webp"
@@ -181,7 +181,7 @@
     {
         "id": 17,
         "name": "Relaxed Gym Tank Top",
-        "price": "$148.00",
+        "price": 148.0,
         "images": [
             "images/woman/relaxed-gym-tank-top_01.webp",
             "images/woman/relaxed-gym-tank-top_04.webp"
@@ -192,7 +192,7 @@
     {
         "id": 18,
         "name": "Oversized Graphic Sweatshirt",
-        "price": "$78.00",
+        "price": 78.0,
         "images": [
             "images/woman/image77.webp",
             "images/woman/image76.webp"
@@ -203,7 +203,7 @@
     {
         "id": 19,
         "name": "Hoodie In Blue",
-        "price": "$198.00",
+        "price": 198.0,
         "images": [
             "images/man/hoodie-in-blue_01.webp",
             "images/man/hoodie-in-blue_02.webp"
@@ -214,7 +214,7 @@
     {
         "id": 20,
         "name": "Jacket With Hood In Stone",
-        "price": "$266.00",
+        "price": 266.0,
         "images": [
             "images/man/jacket-with-hood-in-stone_02.webp",
             "images/man/jacket-with-hood-in-stone_04.webp"
@@ -226,7 +226,7 @@
     {
         "id": 21,
         "name": "Slim Formal Shirt In White",
-        "price": "$198.00",
+        "price": 198.0,
         "images": [
             "images/man/slim-formal-shirt-in-white_01.webp",
             "images/man/slim-formal-shirt-in-white_01.webp"
@@ -237,7 +237,7 @@
     {
         "id": 22,
         "name": "Tapered Pants In Camel",
-        "price": "$106.00",
+        "price": 106.0,
         "images": [
             "images/man/tapered-pants-in-camel-_01.webp",
             "images/man/tapered-pants-in-camel-_04.webp"
@@ -248,7 +248,7 @@
     {
         "id": 23,
         "name": "Sleeve Flower Print Revere",
-        "price": "$52.00",
+        "price": 52.0,
         "images": [
             "images/man/sleeve-flower-print-revere_02.webp"
         ],
@@ -258,7 +258,7 @@
     {
         "id": 24,
         "name": "Color Block Bucket Hat",
-        "price": "$35.00",
+        "price": 35.0,
         "images": [
             "images/man/Color-block-bucket-hat_03.webp",
             "images/man/Color-block-bucket-hat_04.webp"
@@ -269,7 +269,7 @@
     {
         "id": 25,
         "name": "Cargo Pants With Front Pocket",
-        "price": "$52.00",
+        "price": 52.0,
         "images": [
             "images/man/cargo-pants-with-front-pocket_04.webp",
             "images/man/cargo-pants-with-front-pocket_03.webp"
@@ -280,7 +280,7 @@
     {
         "id": 26,
         "name": "Butterfly Charm Hoop Earrings",
-        "price": "$71.00",
+        "price": 71.0,
         "images": [
             "images/Jewelry/Butterfly-Charm-Hoop-Earring_03.webp",
             "images/Jewelry/Butterfly-Charm-Hoop-Earring_02.webp"
@@ -292,7 +292,7 @@
     {
         "id": 27,
         "name": "Row Clear Cz Ring",
-        "price": "$198.00",
+        "price": 198.0,
         "images": [
             "images/Jewelry/ROW-CLEAR-CZ-RING_03.webp",
             "images/Jewelry/ROW-CLEAR-CZ-RING_02.webp"
@@ -303,7 +303,7 @@
     {
         "id": 28,
         "name": "Pin Clear Cz Ring",
-        "price": "$71.00",
+        "price": 71.0,
         "images": [
             "images/Jewelry/PIN-CLEAR-CZ-RING_01.webp",
             "images/Jewelry/PIN-CLEAR-CZ-RING_02.webp"
@@ -314,7 +314,7 @@
     {
         "id": 29,
         "name": "Gold Tone Clear Cz Ring",
-        "price": "$106.00",
+        "price": 106.0,
         "images": [
             "images/Jewelry/GOLD-TONE-CLEAR-CZ_03.webp",
             "images/Jewelry/GOLD-TONE-CLEAR-CZ_04.webp"
@@ -325,7 +325,7 @@
     {
         "id": 30,
         "name": "Gold Tone Star & Moon Bracelet",
-        "price": "$166.00",
+        "price": 166.0,
         "images": [
             "images/Jewelry/Diamante-Butterfly-Necklace_01.webp"
         ],
@@ -335,7 +335,7 @@
     {
         "id": 31,
         "name": "Clear Cz Floral Letter Necklace",
-        "price": "$195.00",
+        "price": 195.0,
         "images": [
             "images/Jewelry/CLEAR-CZ-FLORAL-LETTER-NECKLACE_01.webp",
             "images/Jewelry/CLEAR-CZ-FLORAL-LETTER-NECKLACE_02.webp"
@@ -346,7 +346,7 @@
     {
         "id": 32,
         "name": "Adjustable Bowline Necklace",
-        "price": "$86.00",
+        "price": 86.0,
         "images": [
             "images/Jewelry/ADJUSTABLE-BOWLINE-NECKLACE_01.webp"
         ],
@@ -356,7 +356,7 @@
     {
         "id": 33,
         "name": "Denim Jacket Sun Bleached",
-        "price": "$199.00",
+        "price": 199.0,
         "images": [
             "images/woman/Jacket-_-Sun-Bleached_01.webp",
             "images/woman/Jacket-_-Sun-Bleached_02.webp",
