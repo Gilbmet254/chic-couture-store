@@ -5,7 +5,7 @@ from models import Product
 products_bp = Blueprint("products_bp", __name__)
 
 # GET ALL PRODUCTS
-@products_bp.route("/products", methods=["GET"])
+@products_bp.route("admin/products", methods=["GET"])
 def get_products():
     products = Product.query.all()
 
@@ -46,6 +46,17 @@ def create_product():
 def delete_product(id):
     product = Product.query.get_or_404(id)
 
+@products_bp.route("/admin/products/<int:id>", methods=["DELETE"])
+def delete_product(id):
+    product = Product.query.get(id)
+
+    if not product:
+        return {"error": "Not found"}, 404
+
+    db.session.delete(product)
+    db.session.commit()
+
+    return {"message": "Deleted"}
     db.session.delete(product)
     db.session.commit()
 
