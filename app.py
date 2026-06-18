@@ -1,41 +1,34 @@
 from flask import Flask, request, jsonify
-from models import Customer
 from flask_cors import CORS
 from extensions import db
+from models import Customer
 import os
 
-# 1. CREATE APP FIRST
+# CREATE APP
 app = Flask(__name__)
 CORS(app)
 
-# 2. CONFIGURE APP
+# DATABASE CONFIG
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-# 3. INIT DB
+# INIT DATABASE
 db.init_app(app)
 
-# 4. IMPORT ROUTES (AFTER app exists)
+# IMPORT BLUEPRINTS
 from routes.products import products_bp
 from routes.admin import admin_bp
 
-# 5. REGISTER BLUEPRINTS
+# REGISTER BLUEPRINTS
 app.register_blueprint(products_bp)
 app.register_blueprint(admin_bp)
 
-# 6. ROUTES
+# HOME ROUTE
 @app.route("/")
 def home():
     return {"message": "API running"}
 
-# 7. CREATE TABLES
-with app.app_context():
-    db.create_all()
-
-@app.route("/")
-def home():
-    return {"message": "API running"}
-
+# SIGNUP
 @app.route("/signup", methods=["POST"])
 def signup():
 
@@ -43,9 +36,7 @@ def signup():
 
     email = data.get("email")
 
-    existing = Customer.query.filter_by(
-        email=email
-    ).first()
+    existing = Customer.query.filter_by(email=email).first()
 
     if existing:
         return jsonify({
@@ -67,6 +58,7 @@ def signup():
         "message": "Registration successful"
     })
 
+# LOGIN
 @app.route("/login", methods=["POST"])
 def login():
 
@@ -93,6 +85,7 @@ def login():
         }
     })
 
+# ADMIN CUSTOMERS
 @app.route("/admin/customers")
 def customers():
 
@@ -106,3 +99,10 @@ def customers():
         }
         for c in customers
     ])
+
+# CREATE TABLES
+with app.app_context():
+    db.create_all()
+
+if __name__ == "__main__":
+    app.run(debug=True)
