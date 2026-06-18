@@ -15,36 +15,40 @@
 <!-- NAVBAR -->
 <div class="navbar">
     <h2>🛍 Chic Couture Admin</h2>
-    <button onclick="loadProducts()">Products</button>
+
+    <div class="nav-right">
+        <button onclick="loadProducts()">Products</button>
+        <button onclick="loadCustomers()">Customers</button>
+        <button onclick="loadDashboard()">Dashboard</button>
+
+        <span class="badge" id="notifBadge">0</span>
+    </div>
 </div>
 
+<!-- MAIN -->
 <div class="container">
 
-    <!-- LEFT: FORM -->
-    <div class="form-box">
+    <!-- LEFT PANEL (FORM) -->
+    <div class="panel">
         <h3>Add Product</h3>
 
         <input id="name" placeholder="Product name">
         <input id="price" placeholder="Price">
         <input id="category" placeholder="Category">
-        <input id="image" placeholder="Image URL (Google image link)">
+        <input id="image" placeholder="Image URL">
         <textarea id="description" placeholder="Description"></textarea>
 
-        <button onclick="addProduct()">➕ Add Product</button>
+        <button onclick="addProduct()">➕ Create Product</button>
     </div>
 
-    <!-- RIGHT: OUTPUT -->
-    <div class="dashboard">
-
-        <canvas id="chart"></canvas>
-
+    <!-- RIGHT PANEL (OUTPUT) -->
+    <div class="panel wide">
         <div id="output"></div>
-
+        <canvas id="chart"></canvas>
     </div>
 
 </div>
 
 <script src="admin.js"></script>
-
 </body>
 </html>

@@ -1,115 +1,117 @@
 const API = "https://chic-couture-store-api.onrender.com";
 
 const output = document.getElementById("output");
-let chartInstance = null;
+const badge = document.getElementById("notifBadge");
 
-// =======================
-// LOAD PRODUCTS + CHART
-// =======================
+// ======================
+// DASHBOARD CHART
+// ======================
+function loadDashboard() {
+    output.innerHTML = "<h2>Dashboard</h2>";
+
+    fetch(`${API}/admin/products`)
+        .then(res => res.json())
+        .then(data => {
+            const categories = {};
+
+            data.forEach(p => {
+                categories[p.category || "Other"] =
+                    (categories[p.category || "Other"] || 0) + 1;
+            });
+
+            const ctx = document.getElementById("chart");
+
+            new Chart(ctx, {
+                type: "pie",
+                data: {
+                    labels: Object.keys(categories),
+                    datasets: [{
+                        data: Object.values(categories)
+                    }]
+                }
+            });
+        });
+}
+
+// ======================
+// LOAD PRODUCTS
+// ======================
 async function loadProducts() {
-    output.innerHTML = "<p>Loading products...</p>";
+    const res = await fetch(`${API}/admin/products`);
+    const data = await res.json();
 
-    try {
-        const res = await fetch(`${API}/admin/products`);
-        const data = await res.json();
-
-        if (!Array.isArray(data)) throw new Error("Bad API response");
-
-        renderChart(data);
-
-        output.innerHTML = `
-            <h2>📦 Products</h2>
-            <div class="grid">
-                ${data.map(p => `
-                    <div class="card">
-                        <img src="${p.image || 
-'https://via.placeholder.com/150'}">
-                        <h3>${p.name}</h3>
-                        <p>💰 $${p.price}</p>
-                        <p>📂 ${p.category || "N/A"}</p>
-                        <button 
+    output.innerHTML = `
+        <h2>Products</h2>
+        <div class="grid">
+            ${data.map(p => `
+                <div class="card">
+                    <h3>${p.name}</h3>
+                    <p>$${p.price}</p>
+                    <p>${p.category || ""}</p>
+                    <button 
 onclick="deleteProduct(${p.id})">Delete</button>
-                    </div>
-                `).join("")}
-            </div>
-        `;
-
-    } catch (err) {
-        output.innerHTML = `<p style="color:red;">${err.message}</p>`;
-    }
+                </div>
+            `).join("")}
+        </div>
+    `;
 }
 
-// =======================
-// PIE CHART (CATEGORIES)
-// =======================
-function renderChart(data) {
-    const categories = {};
-
-    data.forEach(p => {
-        categories[p.category || "Unknown"] = (categories[p.category || 
-"Unknown"] || 0) + 1;
-    });
-
-    const ctx = document.getElementById("chart");
-
-    if (chartInstance) chartInstance.destroy();
-
-    chartInstance = new Chart(ctx, {
-        type: "pie",
-        data: {
-            labels: Object.keys(categories),
-            datasets: [{
-                data: Object.values(categories),
-            }]
-        }
-    });
-}
-
-// =======================
+// ======================
 // ADD PRODUCT
-// =======================
+// ======================
 async function addProduct() {
     const product = {
-        name: document.getElementById("name").value,
-        price: document.getElementById("price").value,
-        category: document.getElementById("category").value,
-        description: document.getElementById("description").value,
-        image: document.getElementById("image").value
+        name: name.value,
+        price: price.value,
+        category: category.value,
+        description: description.value,
+        image: image.value
     };
 
-    try {
-        const res = await fetch(`${API}/admin/products`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(product)
-        });
+    const res = await fetch(`${API}/admin/products`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(product)
+    });
 
-        if (!res.ok) throw new Error("Failed to add product");
-
-        alert("Product added successfully!");
+    if (res.ok) {
+        alert("Product added!");
         loadProducts();
-
-    } catch (err) {
-        alert(err.message);
+        loadDashboard();
+    } else {
+        alert("Failed");
     }
 }
 
-// =======================
-// DELETE PRODUCT
-// =======================
+// ======================
+// DELETE
+// ======================
 async function deleteProduct(id) {
-    try {
-        const res = await fetch(`${API}/admin/products/${id}`, {
-            method: "DELETE"
-        });
+    await fetch(`${API}/admin/products/${id}`, {
+        method: "DELETE"
+    });
 
-        if (!res.ok) throw new Error("Delete failed");
+    loadProducts();
+}
 
-        loadProducts();
+// ======================
+// CUSTOMERS + NOTIF
+// ======================
+async function loadCustomers() {
+    const res = await fetch(`${API}/admin/customers`);
+    const data = await res.json();
 
-    } catch (err) {
-        alert(err.message);
-    }
+    badge.innerText = data.length; // simple notification idea
+
+    output.innerHTML = `
+        <h2>Customers</h2>
+        ${data.map(c => `
+            <div class="card">
+                <p>${c.name}</p>
+                <p>${c.email}</p>
+            </div>
+        `).join("")}
+    `;
 }
 
 // INIT
