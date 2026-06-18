@@ -2,6 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 from extensions import db
 from routes.admin import admin_bp
+from routes.products import products_bp
 app.register_blueprint(admin_bp)
 import os
 
