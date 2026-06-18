@@ -13,8 +13,10 @@ def db():
 # GET PRODUCTS
 @app.route("/products")
 def products():
-    conn = db()
+    conn = sqlite3.connect("store.db")
+    conn.row_factory = sqlite3.Row
     rows = conn.execute("SELECT * FROM products").fetchall()
+    conn.close()
     return jsonify([dict(row) for row in rows])
 
 @app.route("/test")
