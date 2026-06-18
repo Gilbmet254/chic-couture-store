@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 import sqlite3
+import json
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -13,11 +14,9 @@ def db():
 # GET PRODUCTS
 @app.route("/products")
 def products():
-    conn = sqlite3.connect("store.db")
-    conn.row_factory = sqlite3.Row
-    rows = conn.execute("SELECT * FROM products").fetchall()
-    conn.close()
-    return jsonify([dict(row) for row in rows])
+    with open("json/products.json", "r") as f:
+        data = json.load(f)
+    return jsonify(data)
 
 @app.route("/test")
 def test():
