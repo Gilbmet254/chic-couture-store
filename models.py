@@ -16,7 +16,6 @@ class Customer(db.Model):
     name = db.Column(db.String(200), nullable=False)
     email = db.Column(db.String(200), unique=True, nullable=False)
     password = db.Column(db.String(255), nullable=False)  # ✅ REQUIRED 
-for login system
 
     orders = db.relationship("Order", backref="customer", lazy=True)
 
