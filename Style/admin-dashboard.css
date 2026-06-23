@@ -89,6 +89,22 @@ body {
     margin-bottom: 40px;
 }
 
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    color: #667eea;
+    cursor: pointer;
+    padding: 8px;
+}
+
 .dashboard-header h1 {
     font-size: 32px;
     font-weight: 700;
@@ -414,9 +430,13 @@ body {
     .charts-section {
         grid-template-columns: 1fr;
     }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
     .sidebar {
         width: 70px;
         padding: 20px 10px;
@@ -435,25 +455,192 @@ body {
     
     .main-content {
         margin-left: 70px;
+        padding: 30px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .sidebar {
+        width: 0;
+        padding: 0;
+        overflow: hidden;
+        position: fixed;
+        transition: width 0.3s ease;
+        z-index: 1000;
+    }
+    
+    .sidebar.open {
+        width: 280px;
+        padding: 30px 20px;
+    }
+    
+    .sidebar.open .sidebar-header h2,
+    .sidebar.open .sidebar-header p,
+    .sidebar.open .nav-link span {
+        display: block;
+    }
+    
+    .sidebar.open .nav-link {
+        justify-content: flex-start;
+        padding: 15px 20px;
+    }
+    
+    .main-content {
+        margin-left: 0;
         padding: 20px;
     }
     
     .stats-grid {
         grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .stat-card {
+        padding: 20px;
+    }
+    
+    .stat-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+    
+    .stat-info p {
+        font-size: 20px;
     }
     
     .dashboard-header {
-        flex-direction: column;
+        flex-direction: row;
+        gap: 15px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    
+    .header-left {
+        flex: 1;
+        min-width: 200px;
+    }
+    
+    .dashboard-header h1 {
+        font-size: 20px;
+    }
+    
+    .header-actions {
+        width: auto;
+        justify-content: flex-end;
+        gap: 10px;
+    }
+    
+    .btn-primary {
+        padding: 10px 16px;
+        font-size: 12px;
+    }
+    
+    .user-profile {
+        display: none;
+    }
+    
+    .charts-section {
+        grid-template-columns: 1fr;
         gap: 20px;
+    }
+    
+    .chart-card {
+        padding: 20px;
+    }
+    
+    .chart-header {
+        flex-direction: column;
+        gap: 10px;
         align-items: flex-start;
+    }
+    
+    .time-filter {
+        width: 100%;
+    }
+    
+    .table-section {
+        padding: 20px;
+    }
+    
+    .table-header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    
+    .data-table-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
     
     .data-table {
         font-size: 12px;
+        min-width: 600px;
     }
     
     .data-table th,
     .data-table td {
-        padding: 10px;
+        padding: 8px 10px;
+    }
+    
+    .action-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        padding: 15px;
+    }
+    
+    .stat-card {
+        padding: 15px;
+        gap: 15px;
+    }
+    
+    .stat-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+    
+    .stat-info h3 {
+        font-size: 12px;
+    }
+    
+    .stat-info p {
+        font-size: 18px;
+    }
+    
+    .chart-card {
+        padding: 15px;
+    }
+    
+    .chart-header h3 {
+        font-size: 16px;
+    }
+    
+    .table-section {
+        padding: 15px;
+    }
+    
+    .table-header h3 {
+        font-size: 16px;
+    }
+    
+    .btn-secondary {
+        padding: 8px 16px;
+        font-size: 13px;
     }
 }
