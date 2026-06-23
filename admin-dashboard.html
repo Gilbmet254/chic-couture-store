@@ -1,106 +1,307 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Admin Dashboard</title>
-  <style>
-    body { font-family: Arial; background:#f5f5f5; padding:20px; }
-
-    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
-
-    .card {
-      background:white;
-      padding:15px;
-      border-radius:10px;
-      box-shadow:0 2px 6px rgba(0,0,0,0.1);
-    }
-
-    table {
-      width:100%;
-      background:white;
-      border-collapse:collapse;
-      margin-top:20px;
-    }
-
-    th, td {
-      padding:10px;
-      border-bottom:1px solid #ddd;
-      text-align:left;
-    }
-
-    button {
-      padding:5px 10px;
-      border:none;
-      cursor:pointer;
-    }
-
-    .delete { background:red; color:white; }
-    .edit { background:orange; color:white; }
-  </style>
+  <title>Admin Dashboard - Chic Couture</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Style/admin-dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>Admin Panel</h2>
+        <p>Chic Couture</p>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-link active">
+          <ion-icon name="grid-outline"></ion-icon>
+          <span>Dashboard</span>
+        </a>
+        <a href="#" class="nav-link">
+          <ion-icon name="cube-outline"></ion-icon>
+          <span>Products</span>
+        </a>
+        <a href="#" class="nav-link">
+          <ion-icon name="cart-outline"></ion-icon>
+          <span>Orders</span>
+        </a>
+        <a href="#" class="nav-link">
+          <ion-icon name="people-outline"></ion-icon>
+          <span>Customers</span>
+        </a>
+        <a href="#" class="nav-link">
+          <ion-icon name="stats-chart-outline"></ion-icon>
+          <span>Analytics</span>
+        </a>
+        <a href="#" class="nav-link">
+          <ion-icon name="settings-outline"></ion-icon>
+          <span>Settings</span>
+        </a>
+      </nav>
+    </aside>
 
-<h1>🛍 Chic Couture Admin Panel</h1>
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="dashboard-header">
+        <h1>Dashboard Overview</h1>
+        <div class="header-actions">
+          <button class="btn-primary">
+            <ion-icon name="add-outline"></ion-icon>
+            Add Product
+          </button>
+          <div class="user-profile">
+            <ion-icon name="person-circle-outline"></ion-icon>
+            <span>Admin</span>
+          </div>
+        </div>
+      </header>
 
-<div class="grid">
-  <div class="card">
-    <h3>Total Products</h3>
-    <p id="productCount">0</p>
+      <!-- Stats Cards -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon revenue">
+            <ion-icon name="cash-outline"></ion-icon>
+          </div>
+          <div class="stat-info">
+            <h3>Total Revenue</h3>
+            <p id="revenue">$24,580</p>
+            <span class="stat-change positive">+12.5%</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon orders">
+            <ion-icon name="cart-outline"></ion-icon>
+          </div>
+          <div class="stat-info">
+            <h3>Total Orders</h3>
+            <p id="orderCount">1,234</p>
+            <span class="stat-change positive">+8.2%</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon products">
+            <ion-icon name="cube-outline"></ion-icon>
+          </div>
+          <div class="stat-info">
+            <h3>Total Products</h3>
+            <p id="productCount">0</p>
+            <span class="stat-change positive">+5.3%</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon customers">
+            <ion-icon name="people-outline"></ion-icon>
+          </div>
+          <div class="stat-info">
+            <h3>Customers</h3>
+            <p>892</p>
+            <span class="stat-change positive">+15.1%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts Section -->
+      <div class="charts-section">
+        <div class="chart-card">
+          <div class="chart-header">
+            <h3>Sales Overview</h3>
+            <select class="time-filter">
+              <option>Last 7 days</option>
+              <option>Last 30 days</option>
+              <option>Last 90 days</option>
+            </select>
+          </div>
+          <canvas id="salesChart"></canvas>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-header">
+            <h3>Revenue by Category</h3>
+          </div>
+          <canvas id="categoryChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Recent Orders Table -->
+      <div class="table-section">
+        <div class="table-header">
+          <h3>Recent Orders</h3>
+          <button class="btn-secondary">View All</button>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Customer</th>
+              <th>Product</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="ordersTable">
+            <tr>
+              <td>#ORD-001</td>
+              <td>John Doe</td>
+              <td>Summer Dress</td>
+              <td>$89.99</td>
+              <td><span class="status completed">Completed</span></td>
+              <td>2024-01-15</td>
+            </tr>
+            <tr>
+              <td>#ORD-002</td>
+              <td>Jane Smith</td>
+              <td>Designer Bag</td>
+              <td>$159.99</td>
+              <td><span class="status pending">Pending</span></td>
+              <td>2024-01-14</td>
+            </tr>
+            <tr>
+              <td>#ORD-003</td>
+              <td>Mike Johnson</td>
+              <td>Sunglasses</td>
+              <td>$45.99</td>
+              <td><span class="status processing">Processing</span></td>
+              <td>2024-01-13</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Products Table -->
+      <div class="table-section">
+        <div class="table-header">
+          <h3>Product Inventory</h3>
+          <button class="btn-secondary">View All</button>
+        </div>
+        <table class="data-table" id="productsTable">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </main>
   </div>
 
-  <div class="card">
-    <h3>Total Orders</h3>
-    <p id="orderCount">0</p>
-  </div>
+  <script>
+    const API = "https://chic-couture-store-api.onrender.com";
 
-  <div class="card">
-    <h3>Revenue</h3>
-    <p id="revenue">$0</p>
-  </div>
-</div>
+    // Initialize Charts
+    function initCharts() {
+      // Sales Chart
+      const salesCtx = document.getElementById('salesChart').getContext('2d');
+      new Chart(salesCtx, {
+        type: 'line',
+        data: {
+          labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          datasets: [{
+            label: 'Sales',
+            data: [1200, 1900, 1500, 2100, 1800, 2400, 2200],
+            borderColor: '#667eea',
+            backgroundColor: 'rgba(102, 126, 234, 0.1)',
+            fill: true,
+            tension: 0.4
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              display: false
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
 
-<h2>Products</h2>
-<table id="productsTable">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Category</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>
+      // Category Chart
+      const categoryCtx = document.getElementById('categoryChart').getContext('2d');
+      new Chart(categoryCtx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Woman', 'Man', 'Accessories', 'Bags', 'Jewelry'],
+          datasets: [{
+            data: [35, 25, 20, 12, 8],
+            backgroundColor: [
+              '#667eea',
+              '#764ba2',
+              '#f093fb',
+              '#f5576c',
+              '#4facfe'
+            ]
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }
+      });
+    }
 
-<script>
-const API = "https://chic-couture-store-api.onrender.com";
+    // Load Products
+    async function loadProducts() {
+      try {
+        const res = await fetch(API + "/products");
+        const data = await res.json();
 
-// LOAD PRODUCTS
-async function loadProducts() {
-  const res = await fetch(API + "/products");
-  const data = await res.json();
+        document.getElementById("productCount").innerText = data.length;
 
-  document.getElementById("productCount").innerText = data.length;
+        let table = document.querySelector("#productsTable tbody");
+        table.innerHTML = "";
 
-  let table = document.querySelector("#productsTable tbody");
-  table.innerHTML = "";
+        data.forEach(p => {
+          table.innerHTML += `
+            <tr>
+              <td>${p.name}</td>
+              <td>${p.category}</td>
+              <td>$${p.price}</td>
+              <td><span class="stock in-stock">In Stock</span></td>
+              <td>
+                <button class="action-btn edit">
+                  <ion-icon name="create-outline"></ion-icon>
+                </button>
+                <button class="action-btn delete">
+                  <ion-icon name="trash-outline"></ion-icon>
+                </button>
+              </td>
+            </tr>
+          `;
+        });
+      } catch (error) {
+        console.error('Error loading products:', error);
+      }
+    }
 
-  data.forEach(p => {
-    table.innerHTML += `
-      <tr>
-        <td>${p.name}</td>
-        <td>$${p.price}</td>
-        <td>${p.category}</td>
-        <td>
-          <button class="delete">Delete</button>
-        </td>
-      </tr>
-    `;
-  });
-}
-
-loadProducts();
-</script>
-
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+      initCharts();
+      loadProducts();
+    });
+  </script>
 </body>
 </html>

@@ -1,13 +1,17 @@
 main{
     padding:8%;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
 }
 .product-header{
-    background-color: #f2f2f2;
-    padding: 10px 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 15px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: 5px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    margin-bottom: 20px;
 }
 .product-header .menu-icon{
     display: flex;
@@ -26,18 +30,26 @@ main{
     font-size: 14px;
     font-weight: 600;
     margin-right: 4px;
+    color: #fff;
 }
 .product-header-right #sort{   
-    border-radius: 0;
+    border-radius: 8px;
     min-width: auto;
     min-height: auto;
-    border: none;
-    background-color: transparent;
+    border: 2px solid rgba(255,255,255,0.3);
+    background-color: rgba(255,255,255,0.2);
     font-size: 14px;
-    font-weight: 300;
+    font-weight: 500;
     margin: 0;
-    padding: 12px;
-    color: #000;
+    padding: 10px 15px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.product-header-right #sort:hover {
+    background-color: rgba(255,255,255,0.3);
+    border-color: rgba(255,255,255,0.5);
 }
 #productCount{
     margin-left: 6px;
@@ -46,20 +58,26 @@ main .container{
     position: relative;
 }
 .aside {
-    width: 250px;
+    width: 280px;
     position: absolute;
     top: 20px;
     left: 0px;
-    background-color: #f2f2f2;
+    background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
     overflow-x: hidden;
     transition: 0.5s;
-    padding: 60px 30px;
+    padding: 40px 25px;
     z-index: 1;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 .aside h2 {
-    font-size: 30px;
-    font-weight: 300;
-    margin-bottom: 8px;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 .shop_categories a {
     padding: 10px 15px;
@@ -72,6 +90,46 @@ main .container{
 .shop_categories a.active,
 .shop_categories a:hover {
     color: #333333;
+}
+
+.shop_categories .category-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+}
+
+.shop_categories .category-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.shop_categories .category-item span {
+    font-size: 16px;
+    color: #818181;
+    flex: 1;
+}
+
+.shop_categories .category-item:hover {
+    background-color: #e8e8e8;
+}
+
+.shop_categories .category-item:hover img {
+    transform: scale(1.1);
+}
+
+.shop_categories .category-item.active {
+    background-color: #000;
+}
+
+.shop_categories .category-item.active span {
+    color: #fff;
 }
 
 /*---------------- products ---------------------*/
@@ -91,7 +149,15 @@ main .container{
 
 .product-card {
     overflow: hidden;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(102, 126, 234, 0.25);
 }
 .card-img{
     position: relative;
@@ -109,40 +175,69 @@ main .container{
 }
 .card-img .addToCart {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(255, 255, 255, 0.8);
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
-    color: #333;
+    width: 45px;
+    height: 45px;
+    font-size: 22px;
+    color: #fff;
     cursor: pointer;
     transition: all .4s;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    opacity: 0;
+    transform: translateY(-10px);
+    z-index: 10;
 }
+
+.card-img:hover .addToCart {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .card-img .addToCart:hover{
-    background-color: #000000dc;
-    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+@media (max-width: 768px) {
+    .card-img .addToCart {
+        opacity: 1;
+        transform: translateY(0);
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
 }
 .card-info {
     padding: 16px 0;
 }
 
 .product-name {
-    font-size: 14px;
-    font-weight: 400;
-    color: #222;
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
     margin: 0 0 8px;
+    transition: color 0.3s ease;
+}
+
+.product-name:hover {
+    color: #667eea;
 }
 
 .product-price {
-    font-size: 14px;
-    font-weight:400 ;
-    color: #696969;
+    font-size: 16px;
+    font-weight: 700;
+    color: #667eea;
     margin: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 @media screen and (max-width: 768px) {
@@ -162,4 +257,60 @@ main .container{
     .products {
         padding-left: 16px;
     }
+}
+
+/* Loading and Error States */
+.loading-container,
+.error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #097a6e;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-container p,
+.error-container p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.error-container ion-icon {
+    font-size: 48px;
+    color: #ff6b6b;
+    margin-bottom: 16px;
+}
+
+.retry-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.retry-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
 }

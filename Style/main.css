@@ -150,6 +150,46 @@ nav ul li{
 nav ul li a{
    font-size: 18px;
    color: #000000;
+   transition: color 0.3s ease;
+}
+nav ul li a:hover{
+   color: #097a6e;
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #000;
+}
+
+@media (max-width: 767px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    nav ul.active {
+        display: flex;
+    }
+    
+    nav ul li {
+        width: 100%;
+        text-align: center;
+        margin: 10px 0;
+    }
 }
 header nav li::after {
     content: "";
@@ -701,4 +741,62 @@ input[type=number]::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
     -moz-appearance: textfield;
+    appearance: none;
+}
+
+/* Toast Notification Styles */
+.toast-notification {
+    position: fixed;
+    top: 100px;
+    right: -400px;
+    background: #fff;
+    padding: 16px 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 10000;
+    transition: right 0.3s ease;
+    min-width: 300px;
+    border-left: 4px solid #097a6e;
+}
+
+.toast-notification.show {
+    right: 20px;
+}
+
+.toast-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.toast-content ion-icon {
+    font-size: 24px;
+    color: #097a6e;
+}
+
+.toast-content span {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+}
+
+.toast-info {
+    border-left-color: #ff6b6b;
+}
+
+.toast-info .toast-content ion-icon {
+    color: #ff6b6b;
+}
+
+@media (max-width: 767px) {
+    .toast-notification {
+        right: -100%;
+        min-width: auto;
+        width: 90%;
+        top: 80px;
+    }
+    
+    .toast-notification.show {
+        right: 5%;
+    }
 }

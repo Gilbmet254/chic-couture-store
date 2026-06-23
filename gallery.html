@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover the latest trends in fashion for women and men at Chic couture. Shop our wide selection of clothes, bags, jewelry, and more.">
+    <meta name="keywords" content="clothes, women, men, fashion, bags, jewelry, Chic couture, latest trends, stylish clothing, accessories">
+    <meta name="author" content="Chic_couture">
+    <link rel="icon" href="images/logowhite.jpg" type="image/x-icon">
+    <!-- css -->
+    <link rel="stylesheet" href="Style/gallery.css">
+    <link rel="stylesheet" href="Style/main.css">
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <!-- icon -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <title>Gallery - Chic Couture</title>
+</head>
+<body>
+    <header class="container" id="header">
+        <div class="header_top">
+              <div class="header_social">
+                <a href="https://www.instagram.com/sa__fashionstyle/?igsh=eWpjbWFqc3FlbGhl" target="_blank">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+                <a href="https://www.facebook.com/people/SA_Fashionstyle/100088622209447/?mibextid=LQQJ4d" target="_blank">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+                <a href="https://wa.me/0769153519" target="_blank">
+                    <ion-icon name="logo-whatsapp"></ion-icon>
+                </a>
+              </div>
+              <img src="images/logo_block.jpg" alt="page logo" id="logo">
+              <div class="header_actions">
+                   <div id="display_login">
+                     <a href="#" id="logout" onclick="logout();">
+                       <span id="signout">Sign Out</span>
+                       <ion-icon name="log-out-outline"></ion-icon>
+                     </a>
+                   </div>
+                   <a href="login.html" title="Login" id="login_btn">
+                     <ion-icon name="person-circle-outline"></ion-icon>
+                   </a>
+                   <a href="#" class="icon-cart">
+                     <ion-icon name="cart-outline"></ion-icon>
+                     <span id="cart-counter">0</span>
+                   </a>
+              </div>
+        </div>
+        <nav>
+            <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <ion-icon name="menu-outline"></ion-icon>
+            </div>
+            <menu>
+                <ul id="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Shop</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </menu>
+        </nav>
+    </header>
+    
+    <section class="gallery-hero">
+        <div class="hero-content">
+            <h1>Our Collection</h1>
+            <p>Explore our stunning fashion pieces</p>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="woman">Woman</button>
+                <button class="filter-btn" data-filter="man">Man</button>
+                <button class="filter-btn" data-filter="accessories">Accessories</button>
+                <button class="filter-btn" data-filter="bags">Bags</button>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="woman">
+                    <div class="gallery-img">
+                        <img src="images/woman/Pieces-short-sleeve-sweater_01.webp" alt="Women's Fashion">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h3>Summer Collection</h3>
+                                <p>Elegant and comfortable</p>
+                                <a href="products.html" class="view-btn">View Products</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="accessories">
+                    <div class="gallery-img">
+                        <img src="images/accessories/sunglasses.webp" alt="Accessories">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h3>Accessories</h3>
+                                <p>Complete your look</p>
+                                <a href="products.html" class="view-btn">View Products</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="bags">
+                    <div class="gallery-img">
+                        <img src="images/bags/crossbody-bag-with-wide-strap_01.webp" alt="Bags">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h3>Designer Bags</h3>
+                                <p>Style meets functionality</p>
+                                <a href="products.html" class="view-btn">View Products</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="woman">
+                    <div class="gallery-img">
+                        <img src="images/woman/SW1.webp" alt="Women's Fashion">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h3>Trending Styles</h3>
+                                <p>Latest fashion trends</p>
+                                <a href="products.html" class="view-btn">View Products</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="accessories">
+                    <div class="gallery-img">
+                        <img src="images/accessories/straw-floppy-hat_03.webp" alt="Accessories">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h3>Summer Hats</h3>
+                                <p>Perfect for sunny days</p>
+                                <a href="products.html" class="view-btn">View Products</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="bags">
+                    <div class="gallery-img">
+                        <img src="images/bags/shopper-bag-with-laptop_01.webp" alt="Bags">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h3>Work Bags</h3>
+                                <p>Professional and stylish</p>
+                                <a href="products.html" class="view-btn">View Products</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="woman">
+                    <div class="gallery-img">
+                        <img src="images/woman/Pieces-short-sleeve-sweater_02.webp" alt="Women's Fashion">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h3>Casual Wear</h3>
+                                <p>Comfortable everyday style</p>
+                                <a href="products.html" class="view-btn">View Products</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="accessories">
+                    <div class="gallery-img">
+                        <img src="images/accessories/sunglasses1.webp" alt="Accessories">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h3>Sunglasses</h3>
+                                <p>Protect in style</p>
+                                <a href="products.html" class="view-btn">View Products</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+         <div class="footer-top">
+            <div class="footer-logo">
+                <img src="images/logo_block.jpg" alt="logo" width="140">
+                <p>The customer is at the heart of our unique business model, which includes design.</p>
+            </div>
+            <div class="footer-list">
+                <div class="list">
+                    <h4>SHOPPING</h4>
+                    <ul>
+                        <li><a href="#">Clothing Store</a></li>
+                        <li><a href="#">Trending Shoes</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Sale</a></li>
+                    </ul>
+                </div>
+                <div class="list">
+                    <h4>Customer Services</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Payment Methods</a></li>
+                        <li><a href="#">Delivary</a></li>
+                        <li><a href="#">Return & Exchanges</a></li>
+                    </ul>
+                </div>
+    
+            </div>
+         </div>
+        <div class="footer-bottom">
+            <p class="footer-company-name">
+                © 2026 All right reserved.Made with <ion-icon name="heart"></ion-icon>
+                 by <a href="https://www.upwork.com/freelancers/~01a11a163a8ee98a35" id="author">Bree</a>
+            </p>
+        </div>
+    </footer>
+    
+    <script src="JavaScript/main.js"></script>
+    <script src="JavaScript/gallery.js"></script>
+</body>
+</html>

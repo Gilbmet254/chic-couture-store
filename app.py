@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)
 
 # DATABASE CONFIG
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///store.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 # INIT DATABASE

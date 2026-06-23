@@ -12,9 +12,14 @@ getData();
 checkCart();
 
 async function getData() {
-    let response = await fetch('json/products.json');
-    let json = await response.json();
-    products = json;
+    try {
+        let response = await fetch('json/products.json');
+        let json = await response.json();
+        products = json;
+    } catch (error) {
+        console.error('Error loading products for cart:', error);
+        products = [];
+    }
 }
 function loadCart() {
     let storedCart = localStorage.getItem('cart');
@@ -33,9 +38,11 @@ function addToCart(productId,inputQuantity = 1) {
         let existingProduct = cart.find(p => p.id == productId);
         if (existingProduct) {
             existingProduct.quantity += 1;
+            showToast(`${product.name} quantity updated!`, 'success');
         } else {
             let productWithQuantity = { ...product, quantity: inputQuantity };
             cart.push(productWithQuantity);
+            showToast(`${product.name} added to cart!`, 'success');
         }
         saveCart();
         checkCart();
@@ -80,9 +87,11 @@ function addCartToHTML() {
 }
 
 function removeFromCart(index) {
+    let productName = cart[index].name;
     cart.splice(index, 1);
     saveCart();
     checkCart();
+    showToast(`${productName} removed from cart`, 'info');
 }
 function increaseQuantity(index){
     cart[index].quantity += 1;
@@ -163,5 +172,7 @@ function checkOut(){
         else {
           window.location.href = "login.html";
         }
+     }
+}       }
      }
 }

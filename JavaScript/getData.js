@@ -1,15 +1,52 @@
 let productsContainer=[];
+let allProducts=[]; // Store all products for cart functionality
 let linkName=document.getElementsByClassName("categories_link");
 
 getData()
 async function getData(category = null){
-    let response = await fetch('http://chic-api.openrender.com/products');
-    let json=await response.json();
-    productsContainer=json;
-    if (category) {
-        productsContainer = productsContainer.filter(product => product.category === category);
+    showLoading();
+    try {
+        let response = await fetch('json/products.json');
+        let json=await response.json();
+        allProducts=json; // Store all products
+        productsContainer=json;
+        // Also update the products array in cart.js
+        if (typeof products !== 'undefined') {
+            products = json;
+        }
+        if (category) {
+            productsContainer = productsContainer.filter(product => product.category === category);
+        }
+        displayProducts();
+    } catch (error) {
+        console.error('Error fetching products:', error);
+        showError();
     }
-    displayProducts();
+}
+
+function showLoading() {
+    const container = document.querySelector('.products .content');
+    if (container) {
+        container.innerHTML = `
+            <div class="loading-container">
+                <div class="spinner"></div>
+                <p>Loading products...</p>
+            </div>
+        `;
+    }
+}
+
+function showError() {
+    const container = document.querySelector('.products .content');
+    if (container) {
+        container.innerHTML = `
+            <div class="error-container">
+                <ion-icon name="alert-circle-outline"></ion-icon>
+                <p>Failed to load products. Please try again.</p>
+                <button onclick="getData()" class="retry-btn">Retry</button>
+            </div>
+        `;
+    }
 }
 function displayProducts(){
     let container=``;
@@ -26,7 +63,7 @@ function displayProducts(){
         </div>
         <div class="card-info">
              <h4 class="product-name" onclick=displayDetails(${productsContainer[i].id});>${productsContainer[i].name}</h4>
-             <h5 class="product-price">${productsContainer[i].price}</h5>
+             <h5 class="product-price">$${productsContainer[i].price}</h5>
         </div>
     </div>`
     }
@@ -37,10 +74,21 @@ function displayProducts(){
       addToCartLinks.forEach(link => {
           link.addEventListener('click', function(event) {
               event.preventDefault();
+              event.stopPropagation();
               let productCard = event.target.closest('.product-card');
               if (productCard && productCard.dataset.id) {
                   let id_product = productCard.dataset.id;
-                  addToCart(id_product);
+                  // Find the product from the full products list
+                  let product = allProducts.find(p => p.id == id_product);
+                  if (product) {
+                      // Update the global products array for cart.js
+                      if (typeof products !== 'undefined') {
+                          products = allProducts;
+                      }
+                      addToCart(id_product);
+                  } else {
+                      showToast('Product not found', 'info');
+                  }
               }
           });
       });

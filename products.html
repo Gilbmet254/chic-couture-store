@@ -53,10 +53,14 @@
            </div>
         </div>
         <nav>
+            <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <ion-icon name="menu-outline"></ion-icon>
+            </div>
             <menu>
-                <ul>
+                <ul id="nav-menu">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="products.html">Shop</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
             </menu>
@@ -83,12 +87,30 @@
             <div class="aside">
                 <h2>Categories</h2>
                 <div class="shop_categories">
-                    <a href="#" class="categories_link" productCategory="Accessories" >Accessories</a>
-                    <a href="#" class="categories_link" productCategory="Bags">Bags</a>
-                    <a href="#" class="categories_link" productCategory="Jewelry">Jewelry</a>
-                    <a href="#" class="categories_link" productCategory="Woman">Woman</a>
-                    <a href="#" class="categories_link" productCategory="Man">Man</a>
-                    <a href="#" class="categories_link" productCategory="Bedroom">Bedroom</a>
+                    <a href="#" class="categories_link category-item" productCategory="Accessories">
+                        <img src="images/accessories/sunglasses.webp" alt="Accessories">
+                        <span>Accessories</span>
+                    </a>
+                    <a href="#" class="categories_link category-item" productCategory="Bags">
+                        <img src="images/bags/crossbody-bag-with-wide-strap_01.webp" alt="Bags">
+                        <span>Bags</span>
+                    </a>
+                    <a href="#" class="categories_link category-item" productCategory="Jewelry">
+                        <img src="images/accessories/sunglasses.webp" alt="Jewelry">
+                        <span>Jewelry</span>
+                    </a>
+                    <a href="#" class="categories_link category-item" productCategory="Woman">
+                        <img src="images/woman/Pieces-short-sleeve-sweater_01.webp" alt="Woman">
+                        <span>Woman</span>
+                    </a>
+                    <a href="#" class="categories_link category-item" productCategory="Man">
+                        <img src="images/bags/crossbody-bag-with-wide-strap_01.webp" alt="Man">
+                        <span>Man</span>
+                    </a>
+                    <a href="#" class="categories_link category-item" productCategory="Bedroom">
+                        <img src="images/background/banner1.webp" alt="Bedroom">
+                        <span>Bedroom</span>
+                    </a>
                 </div>
             </div>
             
